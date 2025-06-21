@@ -94,9 +94,10 @@ export default {
       isScrolled: false,
       mainLinks: [
         { path: '/', name: 'Home' },
+        { path: '/sacco', name: 'Sacco' },
         { path: '/utrading', name: 'UTrading' },
         { path: '/bluemarvels', name: 'Blue Marvels' },
-        { path: '/sacco', name: 'Sacco' },
+        
         { path: '/dapps', name: 'Pay Utility(DApps)' }
       ],
       productLinks: [
