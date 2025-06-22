@@ -71,7 +71,7 @@
             </router-link>
           </div>
           <div class="mobile-menu-footer">
-            <button class="btn-primary" >
+            <button class="btn-primary" style="width: 100%;" >
               <span>Login </span>
               <div class="toggle-track">
                 <div class="toggle-thumb"></div>
@@ -97,20 +97,19 @@ export default {
         { path: '/sacco', name: 'Sacco' },
         { path: '/utrading', name: 'UTrading' },
         { path: '/bluemarvels', name: 'Blue Marvels' },
-        
         { path: '/dapps', name: 'Pay Utility(DApps)' }
       ],
       productLinks: [
         { path: '/about', name: 'About Us' },
         { path: '/blog', name: 'Blog' },
-        { path: '/roadmap', name: 'Road Map' },
         { path: '/services', name: 'Services' }
-      ]
+      ],
+      resizeHandler: null // Store reference for cleanup
     }
   },
   computed: {
     allLinks() {
-      return [...this.mainLinks, ...this.productLinks]
+      return Object.freeze([...this.mainLinks, ...this.productLinks])
     }
   },
   methods: {
@@ -126,6 +125,10 @@ export default {
       this.mobileMenuOpen = !this.mobileMenuOpen
       document.body.style.overflow = this.mobileMenuOpen ? 'hidden' : 'auto'
     },
+    closeMobileMenu() {
+      this.mobileMenuOpen = false
+      document.body.style.overflow = 'auto'
+    },
     checkSystemTheme() {
       const savedTheme = localStorage.getItem('theme') || 
                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
@@ -136,21 +139,34 @@ export default {
       this.isScrolled = window.scrollY > 10
     }
   },
+  watch: {
+    $route() {
+      // Close mobile menu when route changes
+      this.closeMobileMenu()
+    }
+  },
   mounted() {
     this.checkSystemTheme()
     window.addEventListener('scroll', this.handleScroll)
-    window.addEventListener('resize', () => {
+    
+    // Store reference and debounce resize
+    this.resizeHandler = () => {
       if (window.innerWidth > 1024 && this.mobileMenuOpen) {
-        this.mobileMenuOpen = false
+        this.closeMobileMenu()
       }
-    })
+    }
+    window.addEventListener('resize', this.resizeHandler)
   },
   beforeUnmount() {
+    // Cleanup all event listeners
     window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('resize', this.resizeHandler)
+    
+    // Reset overflow when component unmounts
+    document.body.style.overflow = 'auto'
   }
 }
 </script>
-
 <style scoped>
 
 /* ========== Base Navbar Styles ========== */

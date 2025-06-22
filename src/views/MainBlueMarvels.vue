@@ -3,8 +3,6 @@
     <BlueMarvelsHero />
     <BlueMarvelsFeatures />
     <BlueMarvelsRoadmap />
-    <BlueMarvelsTeam />
-    <BlueMarvelsPartners />
   </div>
 </template>
 
@@ -12,8 +10,6 @@
 import BlueMarvelsHero from '@/components/bluemarvels/BlueMarvelsHero.vue'
 import BlueMarvelsFeatures from '@/components/bluemarvels/BlueMarvelsFeatures.vue'
 import BlueMarvelsRoadmap from '@/components/bluemarvels/BlueMarvelsRoadmap.vue'
-import BlueMarvelsTeam from '@/components/bluemarvels/BlueMarvelsTeam.vue'
-import BlueMarvelsPartners from '@/components/bluemarvels/BlueMarvelsPartners.vue'
 
 export default {
   name: 'BlueMarvels',
@@ -21,8 +17,6 @@ export default {
     BlueMarvelsHero,
     BlueMarvelsFeatures,
     BlueMarvelsRoadmap,
-    BlueMarvelsTeam,
-    BlueMarvelsPartners
   }
 }
 </script>

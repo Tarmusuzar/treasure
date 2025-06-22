@@ -3,31 +3,34 @@
     <div class="ut-container">
       <h2 class="ut-section-title">Trusted by Traders Worldwide</h2>
       <p class="ut-section-subtitle">Join thousands of satisfied users automating their trading</p>
-      
-      <div class="ut-testimonial-grid">
-        <div class="testimonial-card" v-for="testimonial in testimonials" :key="testimonial.name">
+
+      <transition name="fade" mode="out-in">
+        <div class="testimonial-card" :key="currentTestimonial.name">
           <div class="testimonial-rating">
             <i class="fas fa-star" v-for="n in 5" :key="n"></i>
           </div>
-          <p class="testimonial-text">"{{ testimonial.text }}"</p>
+          <p class="testimonial-text">"{{ currentTestimonial.text }}"</p>
           <div class="testimonial-author">
-            <img :src="testimonial.avatar" :alt="testimonial.name" class="author-avatar">
+            <img :src="currentTestimonial.avatar" :alt="currentTestimonial.name" class="author-avatar">
             <div class="author-info">
-              <div class="author-name">{{ testimonial.name }}</div>
-              <div class="author-title">{{ testimonial.title }}</div>
+              <div class="author-name">{{ currentTestimonial.name }}</div>
+              <div class="author-title">{{ currentTestimonial.title }}</div>
             </div>
           </div>
         </div>
-      </div>
+      </transition>
     </div>
   </section>
 </template>
+
 
 <script>
 export default {
   name: 'UTradingTestimonials',
   data() {
     return {
+      currentIndex: 0,
+      intervalId: null,
       testimonials: [
         {
           name: 'Sarah Johnson',
@@ -49,6 +52,24 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    currentTestimonial() {
+      return this.testimonials[this.currentIndex];
+    }
+  },
+  mounted() {
+    this.startRotation();
+  },
+  beforeUnmount() {
+    clearInterval(this.intervalId);
+  },
+  methods: {
+    startRotation() {
+      this.intervalId = setInterval(() => {
+        this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
+      }, 5000);
+    }
   }
 }
 </script>
@@ -56,45 +77,38 @@ export default {
 <style scoped>
 .ut-testimonials {
   padding: 6rem 2rem;
-  background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
+  background: var(--neutral-200);
+  transition: var(--transition);
+  text-align: center;
 }
 
 .ut-container {
-  max-width: 1200px;
   margin: 0 auto;
 }
 
 .ut-section-title {
   font-size: 2.5rem;
   font-weight: 700;
-  text-align: center;
   margin-bottom: 1rem;
-  color: #1a1d21;
+  color: var(--text-primary);
 }
 
 .ut-section-subtitle {
   font-size: 1.25rem;
-  text-align: center;
-  color: #6d7582;
-  max-width: 700px;
-  margin: 0 auto 4rem;
-}
-
-.ut-testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  color: var(--text-secondary);
+  margin-bottom: 4rem;
 }
 
 .testimonial-card {
-  background: white;
+  background: var(--neutral-100);
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
 }
 
 .testimonial-rating {
-  color: #ffc107;
+  color: var(--accent);
   margin-bottom: 1.5rem;
   font-size: 0.875rem;
 }
@@ -102,7 +116,7 @@ export default {
 .testimonial-text {
   font-size: 1rem;
   line-height: 1.6;
-  color: #4d535e;
+  color: var(--text-secondary);
   margin-bottom: 2rem;
   font-style: italic;
 }
@@ -110,6 +124,7 @@ export default {
 .testimonial-author {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -122,25 +137,20 @@ export default {
 
 .author-name {
   font-weight: 600;
-  color: #1a1d21;
+  color: var(--text-primary);
 }
 
 .author-title {
   font-size: 0.875rem;
-  color: #6d7582;
+  color: var(--text-secondary);
 }
 
-@media (max-width: 768px) {
-  .ut-testimonials {
-    padding: 4rem 1.5rem;
-  }
-  
-  .ut-section-title {
-    font-size: 2rem;
-  }
-  
-  .ut-section-subtitle {
-    font-size: 1.1rem;
-  }
+/* Fade transition */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.6s ease;
 }
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
 </style>

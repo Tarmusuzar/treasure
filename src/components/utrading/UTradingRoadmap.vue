@@ -62,7 +62,8 @@ export default {
 <style scoped>
 .ut-roadmap {
   padding: 6rem 2rem;
-  background: white;
+  background: var(--neutral-100);
+  transition: var(--transition);
 }
 
 .ut-container {
@@ -75,13 +76,13 @@ export default {
   font-weight: 700;
   text-align: center;
   margin-bottom: 1rem;
-  color: #1a1d21;
+  color: var(--text-primary);
 }
 
 .ut-section-subtitle {
   font-size: 1.25rem;
   text-align: center;
-  color: #6d7582;
+  color: var(--text-secondary);
   max-width: 700px;
   margin: 0 auto 4rem;
 }
@@ -99,7 +100,7 @@ export default {
   bottom: 0;
   left: 50%;
   width: 2px;
-  background: #e6e9ed;
+  background: var(--neutral-300);
   transform: translateX(-50%);
 }
 
@@ -118,19 +119,20 @@ export default {
   left: 50%;
   width: 20px;
   height: 20px;
-  background: #3a86ff;
+  background: var(--primary);
   border-radius: 50%;
   transform: translate(-50%, 0);
-  border: 4px solid white;
-  box-shadow: 0 0 0 2px #3a86ff;
+  border: 4px solid var(--neutral-100);
+  box-shadow: 0 0 0 2px var(--primary);
 }
 
 .timeline-content {
   width: calc(50% - 40px);
   padding: 1.5rem;
-  background: #f8fafc;
+  background: var(--neutral-200);
   border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
 }
 
 .timeline-item:nth-child(odd) .timeline-content {
@@ -140,7 +142,7 @@ export default {
 .timeline-quarter {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #3a86ff;
+  color: var(--primary);
   margin-bottom: 0.5rem;
 }
 
@@ -148,11 +150,11 @@ export default {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #1a1d21;
+  color: var(--text-primary);
 }
 
 .timeline-features {
-  color: #6d7582;
+  color: var(--text-secondary);
   line-height: 1.6;
   padding-left: 1.25rem;
 }
@@ -165,23 +167,23 @@ export default {
   .ut-roadmap {
     padding: 4rem 1.5rem;
   }
-  
+
   .ut-section-title {
     font-size: 2rem;
   }
-  
+
   .ut-section-subtitle {
     font-size: 1.1rem;
   }
-  
+
   .ut-timeline::before {
     left: 20px;
   }
-  
+
   .timeline-marker {
     left: 20px;
   }
-  
+
   .timeline-content {
     width: calc(100% - 60px);
     margin-left: 60px !important;

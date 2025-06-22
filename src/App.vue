@@ -30,72 +30,56 @@ export default {
 
 }
 :root {
-  /* Light Theme - Financial Colors */
-  --primary: #0057B8;        /* Trust blue */
-  --primary-dark: #003D82;
-  --primary-light: #E6F0FF;
-  --secondary: #00A86B;      /* Growth green */
-  --secondary-dark: #00875A;
-  --accent: #FF6B35;         /* Action orange */
-  --accent-light: #FFF0E8;
-  
-  /* Neutral Colors - Improved contrast */
-  --neutral-100: #FFFFFF;
-  --neutral-200: #F8FAFC;
-  --neutral-300: #F1F5F9;
-  --neutral-400: #E2E8F0;
-  --neutral-500: #94A3B8;
-  --neutral-600: #64748B;
+  /* Light Theme */
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #dbeafe;
+  --primary-rgb: 37, 99, 235;
+  --secondary: #10b981;
+  --accent: #f59e0b;
+  --neutral-100: #ffffff;
+  --neutral-200: #f8fafc;
+  --neutral-300: #f1f5f9;
+  --neutral-400: #e2e8f0;
+  --neutral-500: #94a3b8;
+  --neutral-600: #64748b;
   --neutral-700: #475569;
-  --neutral-800: #1E293B;
-  --neutral-900: #0F172A;
-  
-  /* Text Colors */
-  --text-primary: var(--neutral-800);
-  --text-secondary: var(--neutral-600);
-  --text-inverse: var(--neutral-100);
-  
+  --neutral-800: #1e293b;
+  --neutral-900: #0f172a;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+
   /* Dark Theme */
-  --dark-primary: #3A86FF;
-  --dark-primary-dark: #1D6FE8;
-  --dark-primary-light: #0A1F40;
-  --dark-secondary: #4CC9A7;
-  --dark-secondary-dark: #2DAE8C;
-  --dark-accent: #FF9E5E;
-  --dark-accent-light: #3A2A1A;
-  
-  /* Dark Theme Neutrals */
-  --dark-neutral-100: #0F172A;
-  --dark-neutral-200: #1E293B;
+  --dark-primary: #3b82f6;
+  --dark-primary-dark: #2563eb;
+  --dark-primary-light: #1e3a8a;
+  --dark-primary-rgb: 59, 130, 246;
+  --dark-secondary: #10b981;
+  --dark-accent: #f59e0b;
+  --dark-neutral-100: #0f172a;
+  --dark-neutral-200: #1e293b;
   --dark-neutral-300: #334155;
   --dark-neutral-400: #475569;
-  --dark-neutral-500: #64748B;
-  --dark-neutral-600: #94A3B8;
-  --dark-neutral-700: #CBD5E1;
-  --dark-neutral-800: #E2E8F0;
-  --dark-neutral-900: #F8FAFC;
-  
-  /* Dark Theme Text */
-  --dark-text-primary: var(--dark-neutral-800);
-  --dark-text-secondary: var(--dark-neutral-600);
-  --dark-text-inverse: var(--dark-neutral-100);
-  
-  /* Effects */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --dark-neutral-500: #64748b;
+  --dark-neutral-600: #94a3b8;
+  --dark-neutral-700: #cbd5e1;
+  --dark-neutral-800: #e2e8f0;
+  --dark-neutral-900: #f8fafc;
+  --dark-text-primary: #f1f5f9;
+  --dark-text-secondary: #94a3b8;
 }
 
 [data-theme="dark"] {
   --primary: var(--dark-primary);
   --primary-dark: var(--dark-primary-dark);
   --primary-light: var(--dark-primary-light);
+  --primary-rgb: var(--dark-primary-rgb);
   --secondary: var(--dark-secondary);
-  --secondary-dark: var(--dark-secondary-dark);
   --accent: var(--dark-accent);
-  --accent-light: var(--dark-accent-light);
-  
   --neutral-100: var(--dark-neutral-100);
   --neutral-200: var(--dark-neutral-200);
   --neutral-300: var(--dark-neutral-300);
@@ -105,9 +89,7 @@ export default {
   --neutral-700: var(--dark-neutral-700);
   --neutral-800: var(--dark-neutral-800);
   --neutral-900: var(--dark-neutral-900);
-  
   --text-primary: var(--dark-text-primary);
   --text-secondary: var(--dark-text-secondary);
-  --text-inverse: var(--dark-text-inverse);
 }
 </style>
